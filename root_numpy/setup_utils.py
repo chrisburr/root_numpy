@@ -83,6 +83,8 @@ def root_flags(root_config='root-config'):
     if sys.version > '3':
         root_cflags = root_cflags.decode('utf-8')
         root_ldflags = root_ldflags.decode('utf-8')
+    # FIXME: Conda's compilers only support -std=c++1z
+    root_cflags = root_cflags.replace('-std=c++17', '-std=c++1z')
     return root_cflags.split(), root_ldflags.split()
 
 
